@@ -1,1 +1,38 @@
-<p>reactive-form works!</p>
+
+<div>
+  <div class="forUserDetails">
+    <label style="font-size: 30px">User Resistration using Reactive form</label>
+</div>
+<form [formGroup]="reactiveform" (ngSubmit)="submit()"  class="hightWidth center">
+  <input  class="form-control mt-1rem" type="text" formControlName="fullname" placeholder="Full name" required>
+  <span *ngIf="fullname.hasError('required') && fullname.touched" class="forError">Full name is invalid</span>
+  <br>
+  <input class="form-control mt-1rem" type="text" name="address" id="address" formControlName="address" placeholder="Address" required>
+  <span *ngIf="address.hasError('required')&& address.touched" class="forError">Address is invalid</span>
+  <br>
+  <input class="form-control mt-1rem" class="form-control mt-1rem"  type="text" name="city" id="city" formControlName="city" placeholder="City" required>
+  <span *ngIf="city.hasError('required') && city.touched" class="forError">City is invalid</span>
+  <br>
+  <input class="form-control mt-1rem" type="text" name="email" id="email" formControlName="email" placeholder="Email" required>
+  <span *ngIf="email.hasError('required') && email.touched" class="forError">Email is invalid</span>
+  <span *ngIf="email?.hasError('email')" class="forError">Enter email like jacon@xyz.com</span>
+  <br>
+  <input class="form-control mt-1rem" type="text" name="phone" id="phone" formControlName="phone" placeholder="Phone Number" required>
+  <span *ngIf="phone?.hasError('required') && phone.touched" class="forError">Phone Number is invalid</span>
+  <span *ngIf="!phone?.hasError('pattern') &&
+   phone?.hasError('minlength') ||
+  phone?.hasError('maxlength') &&
+  !phone?.hasError('required')"
+  class="forError">Phone Number should be 10 digits to 12 digits</span>
+  <br>
+  <input class="form-control mt-1rem" type="password" name="password" id="password" formControlName="password" placeholder="Password" required>
+  <span *ngIf="password.hasError('required') && password.touched" class="forError">Password is invalid</span>
+  <br>
+  <input class="form-control mt-1rem" type="password" name="cpassword" id="cpassword" formControlName="confirmPassword" placeholder="Confirm Password " required>
+  <span *ngIf="confirmPassword.hasError('required') && confirmPassword.touched" class="forError">Please Confirm your password</span>
+  <br>
+  <p >
+    <button class="form-control mt-1rem" title="Fill all above fields correctly for submition " class="btn btn-primary" type="submit" [disabled] = reactiveform.invalid >Submit</button>
+  </p>
+</form>
+</div>

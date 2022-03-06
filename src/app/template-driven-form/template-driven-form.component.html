@@ -11,7 +11,7 @@
 </div>
 <div>
   <br />
-  <div style="text-align: center">
+  <div class="forUserDetial">
     <label style="font-size: 30px">User Resistration using Template driven form</label>
   </div>
   <form #myform="ngForm" (ngSubmit)="submit(myform)" class="hightWidth center">
@@ -28,12 +28,12 @@
     <span *ngIf="password.errors && password.errors.required" class="forError">Password is required</span>
     <br />
     <input
-      class="form-control" type="password" [(ngModel)]="user.password" #confirm_password="ngModel" name="cnfPass" placeholder="Confirm Password" required
+      class="form-control" type="password" [(ngModel)]="user.cpassword" #confirm_password="ngModel" name="cnfPass" placeholder="Confirm Password" required
     />
     <span *ngIf="confirm_password.errors && confirm_password.errors.required" class="forError">Must Comfirm Password</span>
     <br />
     <p >
-      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn btn-primary" type="submit" [disabled] = "full_name.errors || email.errors || phone_number.errors || password.errors || confirm_password.errors">Submit</button>
     </p>
   </form>
 </div>

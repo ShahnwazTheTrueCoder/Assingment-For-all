@@ -11,7 +11,8 @@ export class TemplateDrivenFormComponent implements OnInit {
     fullName:'',
     email:'',
     phoneNo:null,
-    password:null
+    password:'',
+    cpassword:''
   }
   constructor() { }
 
